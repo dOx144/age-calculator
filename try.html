@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="try.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="user-input">
+        <div class="input-container">
+          <div class="input-section">
+            <label for="day">Day</label>
+            <input
+              type="number"
+              id="day"
+              min="1"
+              max="31"
+              required
+              autocomplete="off"
+            />
+          </div>
+          <div class="input-section">
+            <label for="month">Month</label>
+            <input type="number" id="month" min="1" max="12" required />
+          </div>
+          <div class="input-section">
+            <label for="year">Year</label>
+            <input type="number" id="year" min="1900" max="2099" required />
+          </div>
+        </div>
+        <div class="calculate-section">
+          <hr />
+          <button onclick="calculateAge()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="44"
+              viewBox="0 0 46 44"
+            >
+              <g fill="none" stroke="#FFF" stroke-width="2">
+                <path
+                  d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44"
+                />
+              </g>
+            </svg>
+          </button>
+        </div>
+        <div id="result-section">
+          <h1><span class="results" id="result-year">--</span> Years</h1>
+          <h1><span class="results" id="result-month">--</span> Months</h1>
+          <h1><span class="results" id="result-day">--</span> days</h1>
+        </div>
+      </div>
+    </div>
+    <footer>
+      A project by &copy Jake Dox <br /><span
+        class="creds"
+        style="font-size: clamp(6px, 8px + 1vw, 1rem)"
+        >challenge from Frontendmentor.io</span
+      >
+    </footer>
+    <script>
+      function calculateAge() {
+        const day = parseInt(document.getElementById("day").value);
+        const month = parseInt(document.getElementById("month").value);
+        const year = parseInt(document.getElementById("year").value);
+
+        if (isNaN(day) || isNaN(month) || isNaN(year)) {
+          alert("Please enter valid date values.");
+          return;
+        }
+
+        const currentDate = new Date();
+        const birthDate = new Date(year, month - 1, day); // Month is in zero-based format
+
+        if (birthDate > currentDate) {
+          alert("Birthdate cannot be in the future.");
+          return;
+        }
+
+        const ageInMilliseconds = currentDate - birthDate;
+        const ageDate = new Date(ageInMilliseconds);
+
+        // console.log(ageDate);
+
+        const years = ageDate.getUTCFullYear() - 1970;
+        // console.log(typeof years);
+        const months = ageDate.getUTCMonth();
+        // console.log(months);
+        const days = ageDate.getUTCDate() - 1; // Subtract 1  for 0-based day
+        // console.log(days);
+
+        document.getElementById("result-year").textContent = years;
+        document.getElementById("result-month").textContent = months;
+        document.getElementById("result-day").textContent = days;
+        // document.getElementById("result").textContent = `Your age is ${years} years, ${months} months, and ${days} days.`;
+      }
+
+      // document.getElementById("todayDate").innerHTML = new Date();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+@font-face {
+  font-family: "Poppins";
+  src:
+    url(Poppins-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url(Poppins-ExtraBoldItalic.ttf);
+  font-weight: 800;
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  /* primary colors */
+  --Purple: hsl(259, 100%, 65%);
+  --Light-red: hsl(0, 100%, 67%);
+
+  --just-White: #ffffff;
+  --Off-white: #f0f0f0;
+  --Light-grey: #dbdbdb;
+  --Smokey-grey: #716f6f;
+  --Off-black: #141414;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  background-color: var(--Off-white);
+}
+
+.container {
+  min-width: 450px;
+  width: 500px;
+  max-width: 600px;
+  background-color: var(--just-White);
+  padding: 2em;
+  height: 450px;
+  border-radius: 1em 1em 10em 1em;
+}
+
+.input-container,
+.input-section,
+.calculate-section,
+.calculate-section button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-container {
+  width: 100%;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+
+.input-section {
+  font-size: 12px;
+  font-weight: 800;
+  color: #6a6a6a;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  text-transform: uppercase;
+}
+
+.wrong.red-color {
+  color: var(--Light-red);
+}
+
+input {
+  color: #121212;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  font-weight: 600;
+  padding: 5px 10px;
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+.calculate-section {
+  width: 100%;
+}
+
+.calculate-section hr {
+  width: 100%;
+  border: 1px solid var(--Light-grey);
+}
+
+.calculate-section button {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--Purple);
+  transition: .1s;
+}
+
+.calculate-section button:active {
+  background-color: var(--Off-black);
+  scale: 95%;
+}
+
+#result-section {
+  padding: 3rem 0;
+}
+
+#result-section h1 {
+  font-size: clamp(2rem, 1rem + 3.125vw, 3rem);
+}
+
+.results {
+  color: var(--Purple);
+}
+
+footer {
+  outline: 1px solid;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  font-size: clamp(8px, 10px + 1.125vw, 3rem);
+}
+
+@media (width<600px) {
+  * {
+    /* outline: 1px solid; */
+  }
+
+  .container {
+    width: 100%;
+    border-radius: 0;
+    height: 300px;
+  }
+
+  #result-section {
+    padding: 0;
+  }
+
+  .input-section {
+    width: 100%;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+}
